@@ -2,8 +2,9 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
-
 dotenv.config();
+
+const UserRouter = require('./src/router/userRouter');
 
 
 mongoose
@@ -13,6 +14,9 @@ mongoose
 }).catch((err)=>{
     console.log(err);
 });
+
+
+app.use('/api/user', UserRouter);
 
 const port = process.env.PORT
 
